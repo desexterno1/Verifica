@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="TarjetaCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pos" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Operador" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Secuencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tarjeta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Puerto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Timeout" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TarjetaClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TarjetaClienteResult" type="tns:TCliente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TCliente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Importe" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Saldo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoEmp" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Original" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TarjetaAmiga">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Comercio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Terminal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPLocal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tarjeta" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TarjetaAmigaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TarjetaAmigaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TCliente" type="tns:TCliente" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TarjetaClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:TarjetaCliente" />
+  </wsdl:message>
+  <wsdl:message name="TarjetaClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:TarjetaClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="TarjetaAmigaSoapIn">
+    <wsdl:part name="parameters" element="tns:TarjetaAmiga" />
+  </wsdl:message>
+  <wsdl:message name="TarjetaAmigaSoapOut">
+    <wsdl:part name="parameters" element="tns:TarjetaAmigaResponse" />
+  </wsdl:message>
+  <wsdl:message name="TarjetaClienteHttpGetIn">
+    <wsdl:part name="Sucursal" type="s:string" />
+    <wsdl:part name="Pos" type="s:string" />
+    <wsdl:part name="Operador" type="s:string" />
+    <wsdl:part name="Secuencia" type="s:string" />
+    <wsdl:part name="Tarjeta" type="s:string" />
+    <wsdl:part name="Ip" type="s:string" />
+    <wsdl:part name="Puerto" type="s:string" />
+    <wsdl:part name="Timeout" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TarjetaClienteHttpGetOut">
+    <wsdl:part name="Body" element="tns:TCliente" />
+  </wsdl:message>
+  <wsdl:message name="TarjetaAmigaHttpGetIn">
+    <wsdl:part name="Comercio" type="s:string" />
+    <wsdl:part name="Terminal" type="s:string" />
+    <wsdl:part name="IPLocal" type="s:string" />
+    <wsdl:part name="IP" type="s:string" />
+    <wsdl:part name="Tarjeta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TarjetaAmigaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TarjetaClienteHttpPostIn">
+    <wsdl:part name="Sucursal" type="s:string" />
+    <wsdl:part name="Pos" type="s:string" />
+    <wsdl:part name="Operador" type="s:string" />
+    <wsdl:part name="Secuencia" type="s:string" />
+    <wsdl:part name="Tarjeta" type="s:string" />
+    <wsdl:part name="Ip" type="s:string" />
+    <wsdl:part name="Puerto" type="s:string" />
+    <wsdl:part name="Timeout" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TarjetaClienteHttpPostOut">
+    <wsdl:part name="Body" element="tns:TCliente" />
+  </wsdl:message>
+  <wsdl:message name="TarjetaAmigaHttpPostIn">
+    <wsdl:part name="Comercio" type="s:string" />
+    <wsdl:part name="Terminal" type="s:string" />
+    <wsdl:part name="IPLocal" type="s:string" />
+    <wsdl:part name="IP" type="s:string" />
+    <wsdl:part name="Tarjeta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TarjetaAmigaHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="TarjetaCliente">
+      <wsdl:input message="tns:TarjetaClienteSoapIn" />
+      <wsdl:output message="tns:TarjetaClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TarjetaAmiga">
+      <wsdl:input message="tns:TarjetaAmigaSoapIn" />
+      <wsdl:output message="tns:TarjetaAmigaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpGet">
+    <wsdl:operation name="TarjetaCliente">
+      <wsdl:input message="tns:TarjetaClienteHttpGetIn" />
+      <wsdl:output message="tns:TarjetaClienteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TarjetaAmiga">
+      <wsdl:input message="tns:TarjetaAmigaHttpGetIn" />
+      <wsdl:output message="tns:TarjetaAmigaHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpPost">
+    <wsdl:operation name="TarjetaCliente">
+      <wsdl:input message="tns:TarjetaClienteHttpPostIn" />
+      <wsdl:output message="tns:TarjetaClienteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TarjetaAmiga">
+      <wsdl:input message="tns:TarjetaAmigaHttpPostIn" />
+      <wsdl:output message="tns:TarjetaAmigaHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TarjetaCliente">
+      <soap:operation soapAction="http://tempuri.org/TarjetaCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TarjetaAmiga">
+      <soap:operation soapAction="http://tempuri.org/TarjetaAmiga" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TarjetaCliente">
+      <soap12:operation soapAction="http://tempuri.org/TarjetaCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TarjetaAmiga">
+      <soap12:operation soapAction="http://tempuri.org/TarjetaAmiga" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpGet" type="tns:ServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="TarjetaCliente">
+      <http:operation location="/TarjetaCliente" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TarjetaAmiga">
+      <http:operation location="/TarjetaAmiga" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpPost" type="tns:ServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="TarjetaCliente">
+      <http:operation location="/TarjetaCliente" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TarjetaAmiga">
+      <http:operation location="/TarjetaAmiga" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://10.0.2.45/ws_verificadores/service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://10.0.2.45/ws_verificadores/service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpGet" binding="tns:ServiceHttpGet">
+      <http:address location="http://10.0.2.45/ws_verificadores/service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpPost" binding="tns:ServiceHttpPost">
+      <http:address location="http://10.0.2.45/ws_verificadores/service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

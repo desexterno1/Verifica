@@ -101,18 +101,11 @@ public class Folletos {
         
         
             public void mouseClicked(MouseEvent e) {
-                int fila = jTableEjemplo.rowAtPoint(e.getPoint());
+                /*int fila = jTableEjemplo.rowAtPoint(e.getPoint());
                 int columna = jTableEjemplo.columnAtPoint(e.getPoint());
 
-                /**
-                 * Preguntamos si hicimos clic sobre la celda que contiene el botón, si tuviéramos más de un botón 
-                 * por fila tendríamos que además preguntar por el contenido del botón o el nombre de la columna
-                 */
                 if (presentacion.NewJFrame.jTableEjemplo.getModel().getColumnClass(columna).equals(JButton.class)) {
-                    /**
-                     * Aquí pueden poner lo que quieran, para efectos de este ejemplo, voy a mostrar
-                     * en un cuadro de dialogo todos los campos de la fila que no sean un botón.
-                     */
+                    
                     StringBuilder sb = new StringBuilder();
                     for (int i = 0; i < presentacion.NewJFrame.jTableEjemplo.getModel().getColumnCount(); i++) {
                         if (!presentacion.NewJFrame.jTableEjemplo.getModel().getColumnClass(i).equals(JButton.class)) {
@@ -120,7 +113,7 @@ public class Folletos {
                         }
                     }
                     JOptionPane.showMessageDialog(null, "Seleccionada la fila " + fila + sb.toString());
-                }
+                }*/
             }
         
         

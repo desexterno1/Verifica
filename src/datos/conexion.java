@@ -55,7 +55,7 @@ public class conexion {
     public static ResultSet execquery(String query) throws SQLException {
         Conexion();
         Statement statement = con.createStatement();
-        con.close();
+        //con.close();
         return statement.executeQuery(query);
 
     }
@@ -84,6 +84,7 @@ public class conexion {
         try {
             Conexion();
             int cont = 1;
+            //PreparedStatement cmd = con.prepareStatement(sp);
             CallableStatement cmd = con.prepareCall(sp);
             for (int i = 0; i < valores.length; i++) {
                 if ("s".equals(tipoValor[i].toLowerCase())) {
@@ -95,7 +96,8 @@ public class conexion {
                 }
             }
             cmd.execute();
-            con.close();
+            //cmd.executeUpdate();
+            //con.close();
             return true;
         } catch (SQLException e) {
             err = ("Error al ejecutar sp" + e.toString());
@@ -119,7 +121,7 @@ public class conexion {
         ResultSet rs = null;
         Conexion();
          int cont = 1;
-        CallableStatement cmd = con.prepareCall("{" + sp + "}");
+        CallableStatement cmd = con.prepareCall(sp);
           for (int i = 0; i < valores.length; i++) {
                 if ("s".equals(tipoValor[i].toLowerCase())) {
                     cmd.setString(cont, (String) valores[i]);
